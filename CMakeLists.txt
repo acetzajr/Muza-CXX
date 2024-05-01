@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.28)
+project(Acetza)
+add_executable(muza main.c)
+set_property(TARGET muza PROPERTY C_STANDARD 23)
+set_property(TARGET muza PROPERTY C_STANDARD_REQUIRED ON)
