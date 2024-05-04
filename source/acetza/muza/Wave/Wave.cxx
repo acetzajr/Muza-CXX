@@ -1,6 +1,9 @@
-#include "acetza/muza/Wave.hpp"
+#include "acetza/muza/Wave.hxx"
 namespace acetza::muza {
-Wave::Wave() : frames_{}, channels_{2}, sample_rate_{44'100} {}
+Wave::Wave()
+    : frames_(),
+      channels_(Defaults::kChannels),
+      sample_rate_(Defaults::kSampleRate) {}
 Wave Wave::WithDuration(double duration, int channels, int sample_rate) {
   Wave wave{};
   return std::move(wave);

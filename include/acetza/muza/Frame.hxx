@@ -1,13 +1,14 @@
 #pragma once
+#include <cstddef>
 #include <vector>
 namespace acetza::muza {
 class Frame {
   std::vector<double> samples_;
 
  public:
-  int channels();
+  size_t channels();
   Frame();
-  Frame(int channels);
+  explicit Frame(size_t channels);
   void Print();
 };
 };  // namespace acetza::muza

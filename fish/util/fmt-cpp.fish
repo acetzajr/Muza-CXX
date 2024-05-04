@@ -1,24 +1,18 @@
 #!/bin/fish
-set style Google
 echo "> Formatting c++ files..."
 function format
-    if test $argv = cpp
-        set directory source
-    else
-        set directory include
-    end
-    for file in (find $directory -type f -name "*.$argv")
-        clang-format --style=$style --Werror --dry-run $file &>/dev/null
+    for file in (find $argv[1] -type f -name "*.$argv[2]")
+        clang-format --Werror --dry-run $file &>/dev/null
         if not test $status -eq 0
-            clang-format --style=$style -i $file &>/dev/null
+            clang-format -i $file &>/dev/null
             echo "  $file formatted"
             set count (math $math + 1)
         end
     end
 end
 set count 0
-format cpp
-format hpp
+format source cxx
+format include hxx
 if test $count -eq 0
     echo "  no files formatted"
 end
