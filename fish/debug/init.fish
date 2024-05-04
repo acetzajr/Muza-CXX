@@ -1,4 +1,6 @@
-#!/usr/bin/fish
+#!/bin/fish
 fish/util/mkdir.fish build
 fish/util/mkdir.fish build/debug
-cmake -S=. -B=build/debug -DCMAKE_BUILD_TYPE=Debug
+set c_compiler clang
+set cpp_compiler clang++
+cmake -B=build/debug -DCMAKE_BUILD_TYPE=Debug -S=. -DCMAKE_CXX_COMPILER=$cpp_compiler -DCMAKE_C_COMPILER=$c_compiler

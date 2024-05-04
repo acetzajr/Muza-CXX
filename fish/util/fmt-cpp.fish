@@ -1,8 +1,8 @@
-#!/usr/bin/fish
-set style GNU
-echo "> Formatting c files..."
+#!/bin/fish
+set style Google
+echo "> Formatting c++ files..."
 function format
-    if test $argv = c
+    if test $argv = cpp
         set directory source
     else
         set directory include
@@ -17,8 +17,8 @@ function format
     end
 end
 set count 0
-format c
-format h
+format cpp
+format hpp
 if test $count -eq 0
     echo "  no files formatted"
 end

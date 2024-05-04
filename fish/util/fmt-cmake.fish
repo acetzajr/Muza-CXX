@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/bin/fish
 echo "> Formatting cmake files..."
 function format
     for file in (find . -type f -name "CMakeLists.txt")

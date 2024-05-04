@@ -1,2 +1,2 @@
-#!/usr/bin/fish
+#!/bin/fish
 fish/util/rmdir.fish build/debug

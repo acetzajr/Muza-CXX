@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/bin/fish
 echo "> Formatting fish files..."
 function format
     for file in (find fish -type f -name "*.fish")
