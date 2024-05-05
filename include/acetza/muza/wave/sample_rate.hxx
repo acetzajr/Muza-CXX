@@ -1,6 +1,7 @@
 #pragma once
-#include <cstddef>
+
+#include "acetza/muza/types.hxx"
 namespace acetza::muza::wave {
-size_t TimeToFrame(double time, size_t sample_rate);
-double FrameToTime(size_t frame, size_t sample_rate);
+Index TimeToFrame(Time time, SampleRate sample_rate);
+Time FrameToTime(Index frame, SampleRate sample_rate);
 };  // namespace acetza::muza::wave

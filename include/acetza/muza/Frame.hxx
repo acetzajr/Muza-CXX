@@ -1,14 +1,18 @@
 #pragma once
-#include <cstddef>
 #include <vector>
+
+#include "acetza/muza/types.hxx"
 namespace acetza::muza {
 class Frame {
-  std::vector<double> samples_;
+  std::vector<Sample> samples_;
 
  public:
-  size_t channels();
-  Frame();
-  explicit Frame(size_t channels);
+  struct Defaults {
+    static constexpr Channels kChannels{2};
+  };
+  Channels channels();
+  explicit Frame(Channels channels = Defaults::kChannels);
   void Print();
 };
+using Frames = std::vector<Frame>;
 };  // namespace acetza::muza
