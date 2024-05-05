@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-#include "acetza/muza/types.hxx"
+#include "acetza/muza/types.hpp"
 namespace acetza::muza {
 class Frame {
   std::vector<Sample> samples_;
