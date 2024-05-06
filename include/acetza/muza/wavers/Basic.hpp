@@ -1,4 +1,6 @@
 #pragma once
+#include <memory>
+
 #include "acetza/muza/constants.hpp"
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wavers/Waver.hpp"
@@ -18,6 +20,13 @@ struct Basic : public Waver {
                  Amplitude amplitude = Defaults::kAmplitude,
                  SampleRate sample_rate = Defaults::kSampleRate,
                  Channels channels = Defaults::kChannels);
+  static std::shared_ptr<Basic> MakeShared(
+      Primitive primitive = Defaults::kPrimitive,
+      Frequency frequency = Defaults::kFrequency,
+      Duration duration = Defaults::kDuration,
+      Amplitude amplitude = Defaults::kAmplitude,
+      SampleRate sample_rate = Defaults::kSampleRate,
+      Channels channels = Defaults::kChannels);
   Primitive primitive;
   Frequency frequency;
   Duration duration;

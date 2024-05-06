@@ -18,6 +18,6 @@ Wave Basic::Wave() {
     frame = sample.value;
     index.value++;
   }
-  return std::move(wave);
+  return wave;
 }
 }  // namespace acetza::muza::wavers

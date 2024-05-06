@@ -23,6 +23,12 @@ struct Enveloper : Waver {
       Decay decay = Defaults::kDecay, Sustain sustain = Defaults::kSustain,
       Release release = Defaults::kRelease,
       EnvelopeTransformers transformers = Defaults::kTransformers);
+  static std::shared_ptr<Enveloper> MakeShared(
+      std::shared_ptr<Waver> waver = std::make_shared<Basic>(),
+      Attack attack = Defaults::kAttack, Hold hold = Defaults::kHold,
+      Decay decay = Defaults::kDecay, Sustain sustain = Defaults::kSustain,
+      Release release = Defaults::kRelease,
+      EnvelopeTransformers transformers = Defaults::kTransformers);
   std::shared_ptr<Waver> waver;
   Attack attack;
   Hold hold;

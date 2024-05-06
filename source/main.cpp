@@ -7,8 +7,9 @@
 namespace mz = acetza::muza;
 int main(int argc, char const *argv[]) {
   std::cout << "Hello muza\n";
-  mz::wavers::Enveloper enveloper{
-      std::make_shared<mz::wavers::Basic>(mz::primitives::Saw)};
+  auto basic = mz::wavers::Basic::MakeShared();
+  mz::wavers::Enveloper enveloper{basic};
+  basic->primitive = mz::primitives::Saw;
   enveloper.Wave().Save();
   return 0;
 }
