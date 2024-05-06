@@ -13,4 +13,5 @@ set c "$c,cert-*"
 set c "$c,-modernize-use-trailing-return-type"
 set c "$c,-cppcoreguidelines-avoid-magic-numbers"
 set c "$c,-readability-magic-numbers"
+set c "$c,-modernize-use-nodiscard"
 clang-tidy --checks=$c --dump-config >.clang-tidy

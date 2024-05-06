@@ -12,7 +12,7 @@ Wave::Wave(Time duration, Channels channels, SampleRate sample_rate)
     : channels_(channels), sample_rate_(sample_rate) {
   Index frames_count = sample_rate::TimeToFrame(duration, sample_rate_);
   class Frames frames {
-    frames_count.value, channels_
+    Count{frames_count}, channels_
   };
   frames_ = std::move(frames);
 }

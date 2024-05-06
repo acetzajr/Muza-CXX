@@ -18,6 +18,6 @@ Sample Tri(Part part) {
   return {4.0 * part.value - 4.0};
 }
 Sample Sin(Part part) {
-  return {std::sin(2.0 * std::numbers::phi * part.value)};
+  return {std::sin(2.0 * std::numbers::pi * part.value)};
 }
 }  // namespace acetza::muza::primitives

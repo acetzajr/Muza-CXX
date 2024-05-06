@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,clang-diagnostic-*,clang-analyzer-*,cppcoreguidelines-*,google-*,modernize-*,llvm-*,performance-*,readability-*,bugprone-*,portability-*,cert-*,-modernize-use-trailing-return-type,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers'
+Checks:          'clang-diagnostic-*,clang-analyzer-*,clang-diagnostic-*,clang-analyzer-*,cppcoreguidelines-*,google-*,modernize-*,llvm-*,performance-*,readability-*,bugprone-*,portability-*,cert-*,-modernize-use-trailing-return-type,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-modernize-use-nodiscard'
 WarningsAsErrors: ''
 HeaderFileExtensions:
   - ''
@@ -223,7 +223,6 @@ CheckOptions:
   modernize-use-emplace.TupleTypes: '::std::pair;::std::tuple'
   modernize-use-equals-default.IgnoreMacros: 'true'
   modernize-use-equals-delete.IgnoreMacros: 'true'
-  modernize-use-nodiscard.ReplacementString: '[[nodiscard]]'
   modernize-use-noexcept.ReplacementString: ''
   modernize-use-noexcept.UseNoexceptFalse: 'true'
   modernize-use-nullptr.IgnoredTypes: 'std::_CmpUnspecifiedParam::;^std::__cmp_cat::__unspec'
