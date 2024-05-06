@@ -11,7 +11,7 @@ Wave Basic::Wave() {
     duration, channels, sample_rate
   };
   Index index{0};
-  for (Frame &frame : wave.Frames()) {
+  for (Frame &frame : wave.GetFrames()) {
     Time time = wave.FrameToTime(index);
     Part part = {std::fmod(time.value * frequency.value, 1.0)};
     Sample sample = {primitive(part).value * amplitude.value};

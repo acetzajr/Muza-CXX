@@ -2,5 +2,5 @@
 
 #include "acetza/muza/types.hpp"
 namespace acetza::muza {
-Frame::Frame(Channels channels) : samples_({channels}, {0.0}) {}
+Frame::Frame(Channels channels, Sample sample) : samples_({channels}, sample) {}
 };  // namespace acetza::muza

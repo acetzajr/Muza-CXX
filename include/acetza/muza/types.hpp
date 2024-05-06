@@ -25,4 +25,9 @@ struct Channels : public Size {};
 struct SampleRate : public Size {};
 using Primitive = Sample (*)(Part part);
 using Transformer = Amplitude (*)(Part part);
+struct EnvelopeTransformers {
+  Transformer attack;
+  Transformer decay;
+  Transformer release;
+};
 }  // namespace acetza::muza

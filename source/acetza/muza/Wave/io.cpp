@@ -16,15 +16,15 @@ void Wave::Save(const std::string& path) const {
   if (file == nullptr) {
     throw std::runtime_error{"file == nullptr"};
   }
-  size_t capacity = FramesCount().value * channels_.value;
+  size_t capacity = GetFramesCount().value * channels_.value;
   std::vector<double> samples;
   samples.reserve(capacity);
-  for (const Frame& frame : Frames()) {
+  for (const Frame& frame : GetFrames()) {
     for (const Sample& sample : frame.Samples()) {
       samples.push_back(sample.value);
     }
   }
-  auto requested = static_cast<sf_count_t>(FramesCount().value);
+  auto requested = static_cast<sf_count_t>(GetFramesCount().value);
   auto written = sf_writef_double(file, samples.data(), requested);
   if (written != requested) {
     throw std::runtime_error{"written != requested"};

@@ -10,6 +10,8 @@ namespace acetza::muza {
 class Wave {
  public:
   struct Defaults {
+    static constexpr std::string kWaveSavePath{constants::kWaveSavePath};
+    static constexpr Sample kSample{constants::kSample};
     static constexpr Channels kChannels{constants::kChannels};
     static constexpr SampleRate kSampleRate{constants::kSampleRate};
   };
@@ -17,16 +19,18 @@ class Wave {
                 SampleRate sample_rate = Defaults::kSampleRate);
   explicit Wave(Frames&& frames, Channels channels = Defaults::kChannels,
                 SampleRate sample_rate = Defaults::kSampleRate);
-  explicit Wave(Time duration, Channels channels = Defaults::kChannels,
+  explicit Wave(Duration duration, Channels channels = Defaults::kChannels,
                 SampleRate sample_rate = Defaults::kSampleRate);
-  const class Frames& Frames() const;
-  Count ChannelsCount() const;
-  Count FramesCount() const;
-  class Frames& Frames();
+  const class Frames& GetFrames() const;
+  Count GetChannelsCount() const;
+  Count GetFramesCount() const;
+  Duration GetDuration() const;
+  class Frames& GetFrames();
+  void SetDuration(Duration duration, Sample fill = Defaults::kSample);
   Frame& operator[](Index);
   [[nodiscard]] Time FrameToTime(Index frame) const;
   [[nodiscard]] Index TimeToFrame(Time time) const;
-  void Save(const std::string& path) const;
+  void Save(const std::string& path = Defaults::kWaveSavePath) const;
 
  private:
   class Frames frames_;

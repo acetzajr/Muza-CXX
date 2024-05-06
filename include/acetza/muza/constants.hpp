@@ -1,10 +1,13 @@
 #pragma once
 #include <numbers>
+#include <string>
 
 #include "acetza/muza/primitives.hpp"
 #include "acetza/muza/transformers.hpp"
 #include "acetza/muza/types.hpp"
 namespace acetza::muza::constants {
+constexpr std::string kWaveSavePath{"tmp/wave.wav"};
+constexpr Sample kSample{0.0};
 constexpr double kHalfPi{std::numbers::pi / 2.0};
 constexpr Transformer kTransformer{transformers::Smooth};
 constexpr Attack kAttack{1.0 / 16.0};

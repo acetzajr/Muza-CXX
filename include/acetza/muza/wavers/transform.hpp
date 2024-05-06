@@ -9,5 +9,5 @@ struct TransformResult {
 };
 TransformResult Transform(Wave& wave, Transformer transformer, Time start_time,
                           Amplitude start_amplitude, Time end_time,
-                          Amplitude end_amplitude, Time duration);
+                          Amplitude end_amplitude, Duration duration);
 }  // namespace acetza::muza::wavers

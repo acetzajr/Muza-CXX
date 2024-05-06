@@ -4,8 +4,8 @@
 namespace acetza::muza::wavers {
 TransformResult Transform(Wave& wave, Transformer transformer, Time start_time,
                           Amplitude start_amplitude, Time end_time,
-                          Amplitude end_amplitude, Time duration) {
-  Index frame_limit = wave.TimeToFrame(duration);
+                          Amplitude end_amplitude, Duration duration) {
+  Index frame_limit = wave.TimeToFrame({duration});
   Index start_frame = wave.TimeToFrame(start_time);
   Index end_frame = wave.TimeToFrame(end_time);
   Amplitude amplitude_difference = {end_amplitude.value -

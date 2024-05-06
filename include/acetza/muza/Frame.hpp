@@ -7,9 +7,11 @@ namespace acetza::muza {
 class Frame {
  public:
   struct Defaults {
+    static constexpr Sample kSample{constants::kSample};
     static constexpr Channels kChannels{constants::kChannels};
   };
-  explicit Frame(Channels channels = Defaults::kChannels);
+  explicit Frame(Channels channels = Defaults::kChannels,
+                 Sample sample = Defaults::kSample);
   Channels channels() const;
   const class Samples& Samples() const;
   class Samples& Samples();
