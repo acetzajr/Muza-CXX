@@ -20,6 +20,7 @@ class Wave {
   explicit Wave(Time duration, Channels channels = Defaults::kChannels,
                 SampleRate sample_rate = Defaults::kSampleRate);
   const class Frames& Frames() const;
+  Count ChannelsCount() const;
   Count FramesCount() const;
   class Frames& Frames();
   Frame& operator[](Index);

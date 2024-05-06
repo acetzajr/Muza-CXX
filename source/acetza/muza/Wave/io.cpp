@@ -1,5 +1,6 @@
 #include <sndfile.h>
 
+#include <cstddef>
 #include <stdexcept>
 
 #include "acetza/muza/Frame.hpp"
@@ -15,7 +16,9 @@ void Wave::Save(const std::string& path) const {
   if (file == nullptr) {
     throw std::runtime_error{"file == nullptr"};
   }
+  size_t capacity = FramesCount().value * channels_.value;
   std::vector<double> samples;
+  samples.reserve(capacity);
   for (const Frame& frame : Frames()) {
     for (const Sample& sample : frame.Samples()) {
       samples.push_back(sample.value);
