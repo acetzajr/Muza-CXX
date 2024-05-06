@@ -2,15 +2,21 @@
 #include "acetza/muza/types.hpp"
 namespace acetza::muza {
 Sample& Frame::operator[](Index index) { return samples_[index.value]; }
-Frame& Frame::operator+=(Sample sample) {
+Frame& Frame::operator=(double value) {
   for (Sample& channel : samples_) {
-    channel.value += sample.value;
+    channel.value = value;
   }
   return *this;
 }
-Frame& Frame::operator=(Sample sample) {
+Frame& Frame::operator+=(double value) {
   for (Sample& channel : samples_) {
-    channel.value = sample.value;
+    channel.value += value;
+  }
+  return *this;
+}
+Frame& Frame::operator*=(double value) {
+  for (Sample& channel : samples_) {
+    channel.value *= value;
   }
   return *this;
 }

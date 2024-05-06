@@ -14,8 +14,9 @@ class Frame {
   const class Samples& Samples() const;
   class Samples& Samples();
   Sample& operator[](Index);
-  Frame& operator+=(Sample);
-  Frame& operator=(Sample);
+  Frame& operator=(double);
+  Frame& operator+=(double);
+  Frame& operator*=(double);
   void Print();
 
  private:

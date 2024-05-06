@@ -8,14 +8,14 @@
 namespace acetza::muza::wavers {
 Wave Basic::Wave() {
   class Wave wave {
-    duration_, channels_, sample_rate_
+    duration, channels, sample_rate
   };
   Index index{0};
   for (Frame &frame : wave.Frames()) {
     Time time = wave.FrameToTime(index);
-    Part part = {std::fmod(time.value * frequency_.value, 1.0)};
-    Sample sample = {primitive_(part).value * amplitude_.value};
-    frame = sample;
+    Part part = {std::fmod(time.value * frequency.value, 1.0)};
+    Sample sample = {primitive(part).value * amplitude.value};
+    frame = sample.value;
     index.value++;
   }
   return std::move(wave);
