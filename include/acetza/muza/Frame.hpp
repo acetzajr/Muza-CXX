@@ -1,12 +1,13 @@
 #pragma once
 
 #include "acetza/muza/Samples.hpp"
+#include "acetza/muza/constants.hpp"
 #include "acetza/muza/types.hpp"
 namespace acetza::muza {
 class Frame {
  public:
   struct Defaults {
-    static constexpr Channels kChannels{2};
+    static constexpr Channels kChannels{constants::kChannels};
   };
   explicit Frame(Channels channels = Defaults::kChannels);
   Channels channels() const;

@@ -16,4 +16,5 @@ struct Count : public Value<std::size_t> {};
 struct Channels : public Value<std::size_t> {};
 struct SampleRate : public Value<std::size_t> {};
 using Primitive = Sample (*)(Part part);
+using Transformer = Amplitude (*)(Part part);
 }  // namespace acetza::muza
