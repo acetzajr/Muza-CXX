@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,clang-diagnostic-*,clang-analyzer-*,cppcoreguidelines-*,google-*,modernize-*,llvm-*,performance-*,readability-*,bugprone-*,portability-*,cert-*,-modernize-use-trailing-return-type,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-modernize-use-nodiscard'
+Checks:          'clang-diagnostic-*,clang-analyzer-*,clang-diagnostic-*,clang-analyzer-*,cppcoreguidelines-*,google-*,modernize-*,llvm-*,performance-*,readability-*,bugprone-*,portability-*,cert-*,-modernize-use-trailing-return-type,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-modernize-use-nodiscard,-cppcoreguidelines-avoid-goto'
 WarningsAsErrors: ''
 HeaderFileExtensions:
   - ''

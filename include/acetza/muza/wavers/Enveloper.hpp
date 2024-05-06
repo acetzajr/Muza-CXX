@@ -31,5 +31,13 @@ struct Enveloper : Waver {
   Release release;
   EnvelopeTransformers transformers;
   class Wave Wave() override;
+
+ private:
+  struct InnerResult {
+    Time time;
+    Amplitude amplitude;
+    Duration total;
+  };
+  InnerResult Inner(class Wave &wave);
 };
 }  // namespace acetza::muza::wavers
