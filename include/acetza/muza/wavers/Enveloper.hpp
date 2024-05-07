@@ -30,16 +30,16 @@ struct Enveloper : Waver {
   };
   explicit Enveloper(const Args0x0& args);
   static SharedEnveloper MakeShared(const Args0x0& args);
-  SharedWaver waver;
-  Attack attack;
-  Hold hold;
-  Decay decay;
-  Sustain sustain;
-  Release release;
-  EnvelopeTransformers transformers;
   class Wave Wave() override;
 
  private:
+  SharedWaver waver_;
+  Attack attack_;
+  Hold hold_;
+  Decay decay_;
+  Sustain sustain_;
+  Release release_;
+  EnvelopeTransformers transformers;
   struct InnerResult {
     Time time;
     Amplitude amplitude;

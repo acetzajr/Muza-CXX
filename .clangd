@@ -1,21 +1,44 @@
 {
+  "Index": {
+    "Background": "Build"
+  },
+  "Completion": {
+    "AllScopes": true
+  },
+  "InlayHints": {
+    "BlockEnd": "Yes",
+    "Designators": "Yes",
+    "Enabled": "Yes",
+    "ParameterNames": "Yes",
+    "DeducedTypes": "Yes",
+    "TypeNameLimit": 0
+  },
+  "Hover": {
+    "ShowAKA": "Yes"
+  },
   "Diagnostics": {
     "ClangTidy": {
+      "FastCheckFilter": "None",
       "Add": [
-        "clang-diagnostic*",
-        "clang-analyzer*",
-        "modernize*",
+        "clang-diagnostic-*",
+        "clang-analyzer-*",
+        "modernize-*",
         "llvm-*",
-        "performance*",
-        "cppcoreguidelines*",
-        "readability*",
-        "cert*",
-        "bugprone*",
-        "portability*",
+        "performance-*",
+        "cppcoreguidelines-*",
+        "readability-*",
+        "cert-*",
+        "bugprone-*",
+        "portability-*",
+        "hicpp-*",
+        "misc-*",
+        "concurrency-*",
         "google*"
       ],
       "Remove": [
-        "modernize-use-trailing-return-type"
+        "modernize-use-trailing-return-type",
+        "readability-magic-numbers",
+        "cppcoreguidelines-avoid-magic-numbers"
       ]
     }
   }

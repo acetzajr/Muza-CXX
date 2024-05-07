@@ -26,12 +26,14 @@ struct Basic : public Waver {
   };
   explicit Basic(const Args0x0& args);
   static SharedBasic MakeShared(const Args0x0& args);
-  Primitive primitive;
-  Frequency frequency;
-  Duration duration;
-  Amplitude amplitude;
-  SampleRate sample_rate;
-  Channels channels;
   class Wave Wave() override;
+
+ private:
+  Primitive primitive_;
+  Frequency frequency_;
+  Duration duration_;
+  Amplitude amplitude_;
+  SampleRate sample_rate_;
+  Channels channels_;
 };
 }  // namespace acetza::muza::wavers

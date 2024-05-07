@@ -1,7 +1,5 @@
 #include "acetza/muza/wavers/transform.hpp"
 
-#include <iostream>
-
 #include "acetza/muza/types.hpp"
 namespace acetza::muza::wavers {
 TransformResult Transform(Wave& wave, Transformer transformer, Time start_time,
