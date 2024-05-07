@@ -4,7 +4,7 @@
 
 #include "acetza/muza/types.hpp"
 
-namespace acetza::muza::wavers {
+namespace acetza::muza {
 Basic::Basic(const Args0x0& args)
     : primitive_(args.primitive),
       frequency_(args.frequency),
@@ -16,4 +16,4 @@ SharedBasic Basic::MakeShared(const Args0x0& args) {
   return std::make_shared<Basic>(args);
 }
 
-}  // namespace acetza::muza::wavers
+}  // namespace acetza::muza

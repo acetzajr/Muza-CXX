@@ -2,9 +2,11 @@
 
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wavers/Enveloper.hpp"
+#include "acetza/muza/wavers/concepts.hpp"
 #include "acetza/muza/wavers/transform.hpp"
-namespace acetza::muza::wavers {
-Enveloper::InnerResult Enveloper::Inner(class Wave &wave) {
+namespace acetza::muza {
+template <concepts::Waver Waver>
+Enveloper<Waver>::InnerResult Enveloper<Waver>::Inner(class Wave &wave) {
   Duration total{wave.GetDuration()};
   Duration limit{total.value - release_.value};
   if (limit.value <= 0.0) {
@@ -41,4 +43,4 @@ Wave Enveloper::Wave() {
             Time{result.total}, Amplitude{0.0}, result.total);
   return wave;
 }
-}  // namespace acetza::muza::wavers
+}  // namespace acetza::muza

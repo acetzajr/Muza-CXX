@@ -1,14 +1,11 @@
 #pragma once
-#include <memory>
 
 #include "acetza/muza/Wave.hpp"
 #include "acetza/muza/constants.hpp"
 #include "acetza/muza/types.hpp"
-#include "acetza/muza/wavers/Waver.hpp"
-namespace acetza::muza::wavers {
-struct Basic;
-using SharedBasic = std::shared_ptr<Basic>;
-struct Basic : public Waver {
+namespace acetza::muza {
+class Basic {
+ public:
   struct Defaults {
     static constexpr Primitive kPrimitive{constants::kPrimitive};
     static constexpr Frequency kFrequency{constants::kFrequency};
@@ -26,8 +23,9 @@ struct Basic : public Waver {
     Channels channels = Defaults::kChannels;
   };
   explicit Basic(const Args0x0& args);
-  static SharedBasic MakeShared(const Args0x0& args);
-  class Wave Wave() override;
+  [[nodiscard]] Frequency GetFrequency() const;
+  void SetFrequency(Frequency frequency);
+  class Wave Wave();
 
  private:
   Primitive primitive_;
@@ -37,4 +35,4 @@ struct Basic : public Waver {
   SampleRate sample_rate_;
   Channels channels_;
 };
-}  // namespace acetza::muza::wavers
+}  // namespace acetza::muza

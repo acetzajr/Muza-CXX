@@ -1,15 +1,18 @@
 #pragma once
-#include <memory>
 
 #include "acetza/muza/Wave.hpp"
 #include "acetza/muza/constants.hpp"
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wavers/Basic.hpp"
-#include "acetza/muza/wavers/Waver.hpp"
-namespace acetza::muza::wavers {
-struct Enveloper;
-using SharedEnveloper = std::shared_ptr<Enveloper>;
-struct Enveloper : Waver {
+#include "acetza/muza/wavers/concepts.hpp"
+namespace acetza::muza {
+namespace enveloper {
+template <typename T>
+concept Waver = concepts::Waver<T> && concepts::Frequencyr<T>;
+}  // namespace enveloper
+template <enveloper::Waver Waver>
+class Enveloper {
+ public:
   struct Defaults {
     static constexpr EnvelopeTransformers kTransformers{
         constants::kTransformer, constants::kTransformer,
@@ -21,7 +24,7 @@ struct Enveloper : Waver {
     static constexpr Release kRelease{constants::kRelease};
   };
   struct Args0x0 {
-    SharedWaver waver = Basic::MakeShared({});
+    Waver waver = Basic{{}};
     Attack attack = Defaults::kAttack;
     Hold hold = Defaults::kHold;
     Decay decay = Defaults::kDecay;
@@ -30,11 +33,10 @@ struct Enveloper : Waver {
     EnvelopeTransformers transformers = Defaults::kTransformers;
   };
   explicit Enveloper(const Args0x0& args);
-  static SharedEnveloper MakeShared(const Args0x0& args);
-  class Wave Wave() override;
+  [[nodiscard]] class Wave Wave() const;
 
  private:
-  SharedWaver waver_;
+  Waver waver_;
   Attack attack_;
   Hold hold_;
   Decay decay_;
@@ -48,4 +50,4 @@ struct Enveloper : Waver {
   };
   InnerResult Inner(class Wave& wave);
 };
-}  // namespace acetza::muza::wavers
+}  // namespace acetza::muza

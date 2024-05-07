@@ -5,7 +5,7 @@
 #include "acetza/muza/Frame.hpp"
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wavers/Basic.hpp"
-namespace acetza::muza::wavers {
+namespace acetza::muza {
 Wave Basic::Wave() {
   class Wave wave {
     duration_, { channels_, sample_rate_ }
@@ -20,4 +20,4 @@ Wave Basic::Wave() {
   }
   return wave;
 }
-}  // namespace acetza::muza::wavers
+}  // namespace acetza::muza
