@@ -17,6 +17,7 @@
     "ShowAKA": "Yes"
   },
   "Diagnostics": {
+    "MissingIncludes": "Strict",
     "ClangTidy": {
       "FastCheckFilter": "None",
       "Add": [
