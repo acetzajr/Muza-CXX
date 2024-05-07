@@ -22,10 +22,10 @@ class Wave {
   explicit Wave(const Args0x0&);
   explicit Wave(Frames&& frames, const Args0x0&);
   explicit Wave(Duration duration, const Args0x0&);
-  const class Frames& GetFrames() const;
-  Count GetChannelsCount() const;
-  Count GetFramesCount() const;
-  Duration GetDuration() const;
+  [[nodiscard]] const class Frames& GetFrames() const;
+  [[nodiscard]] Count GetChannelsCount() const;
+  [[nodiscard]] Count GetFramesCount() const;
+  [[nodiscard]] Duration GetDuration() const;
   class Frames& GetFrames();
   void SetDuration(Duration duration, Sample fill = Defaults::kSample);
   Frame& operator[](Index);

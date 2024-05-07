@@ -7,7 +7,7 @@ namespace acetza::muza {
 Wave::Wave(const Args0x0& args)
     : channels_(args.channels), sample_rate_(args.sample_rate) {}
 Wave::Wave(class Frames&& frames, const Args0x0& args)
-    : frames_(frames),
+    : frames_(std::move(frames)),
       channels_(args.channels),
       sample_rate_(args.sample_rate) {}
 Wave::Wave(Duration duration, const Args0x0& args)

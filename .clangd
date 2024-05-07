@@ -1,0 +1,22 @@
+{
+  "Diagnostics": {
+    "ClangTidy": {
+      "Add": [
+        "clang-diagnostic*",
+        "clang-analyzer*",
+        "modernize*",
+        "llvm-*",
+        "performance*",
+        "cppcoreguidelines*",
+        "readability*",
+        "cert*",
+        "bugprone*",
+        "portability*",
+        "google*"
+      ],
+      "Remove": [
+        "modernize-use-trailing-return-type"
+      ]
+    }
+  }
+}
