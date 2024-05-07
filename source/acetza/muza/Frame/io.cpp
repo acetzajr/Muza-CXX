@@ -4,7 +4,7 @@
 #include "acetza/muza/types.hpp"
 namespace acetza::muza {
 void Frame::Print() {
-  for (auto &sample : samples_) {
+  for (Sample& sample : samples_) {
     std::cout << "[" << sample.value << "]";
   }
   std::cout << "\n";

@@ -2,9 +2,8 @@
 #include "acetza/muza/wavers/Basic.hpp"
 #include "acetza/muza/wavers/Enveloper.hpp"
 namespace mz = acetza::muza;
-namespace wv = mz::wavers;
 int main(int /*argc*/, char const* /*argv*/[]) {
-  wv::Enveloper<wv::Basic> waver{{}};
+  mz::Enveloper<mz::Basic> waver{{mz::Basic{{}}}};
   waver.Wave().Save();
   return 0;
 }

@@ -6,7 +6,7 @@
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wavers/Basic.hpp"
 namespace acetza::muza {
-Wave Basic::Wave() {
+Wave Basic::Wave() const {
   class Wave wave {
     duration_, { channels_, sample_rate_ }
   };

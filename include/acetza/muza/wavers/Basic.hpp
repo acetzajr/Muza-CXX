@@ -25,7 +25,7 @@ class Basic {
   explicit Basic(const Args0x0& args);
   [[nodiscard]] Frequency GetFrequency() const;
   void SetFrequency(Frequency frequency);
-  class Wave Wave();
+  [[nodiscard]] class Wave Wave() const;
 
  private:
   Primitive primitive_;

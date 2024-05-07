@@ -26,8 +26,8 @@ Wave& Wave::Save(const std::string& path) {
       samples.push_back(sample.value);
     }
   }
-  auto requested = static_cast<sf_count_t>(GetFramesCount().value);
-  auto written = sf_writef_double(file, samples.data(), requested);
+  sf_count_t requested = static_cast<sf_count_t>(GetFramesCount().value);
+  sf_count_t written = sf_writef_double(file, samples.data(), requested);
   if (written != requested) {
     throw std::runtime_error{"written != requested"};
   }
