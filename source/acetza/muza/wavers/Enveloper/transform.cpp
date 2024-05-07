@@ -17,9 +17,6 @@ TransformResult Transform(Wave& wave, Transformer transformer, Time start_time,
                                   amplitude_difference.value};
   auto frames_count = static_cast<double>(end_frame.value - start_frame.value);
   double index = 1.0;
-  std::cout << end_amplitude.value;
-  std::cout << " ";
-  std::cout << "\n";
   for (Index frame_index{start_frame}; frame_index.value < end_frame.value;
        frame_index.value++) {
     if (frame_index.value >= frame_limit.value) {

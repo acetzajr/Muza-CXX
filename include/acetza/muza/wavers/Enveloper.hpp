@@ -6,6 +6,8 @@
 #include "acetza/muza/wavers/Basic.hpp"
 #include "acetza/muza/wavers/Waver.hpp"
 namespace acetza::muza::wavers {
+struct Enveloper;
+using SharedEnveloper = std::shared_ptr<Enveloper>;
 struct Enveloper : Waver {
   struct Defaults {
     static constexpr EnvelopeTransformers kTransformers{
@@ -17,19 +19,18 @@ struct Enveloper : Waver {
     static constexpr Sustain kSustain{constants::kSustain};
     static constexpr Release kRelease{constants::kRelease};
   };
-  explicit Enveloper(
-      std::shared_ptr<Waver> waver = std::make_shared<Basic>(),
-      Attack attack = Defaults::kAttack, Hold hold = Defaults::kHold,
-      Decay decay = Defaults::kDecay, Sustain sustain = Defaults::kSustain,
-      Release release = Defaults::kRelease,
-      EnvelopeTransformers transformers = Defaults::kTransformers);
-  static std::shared_ptr<Enveloper> MakeShared(
-      std::shared_ptr<Waver> waver = std::make_shared<Basic>(),
-      Attack attack = Defaults::kAttack, Hold hold = Defaults::kHold,
-      Decay decay = Defaults::kDecay, Sustain sustain = Defaults::kSustain,
-      Release release = Defaults::kRelease,
-      EnvelopeTransformers transformers = Defaults::kTransformers);
-  std::shared_ptr<Waver> waver;
+  struct Args0x0 {
+    SharedWaver waver = Basic::MakeShared({});
+    Attack attack = Defaults::kAttack;
+    Hold hold = Defaults::kHold;
+    Decay decay = Defaults::kDecay;
+    Sustain sustain = Defaults::kSustain;
+    Release release = Defaults::kRelease;
+    EnvelopeTransformers transformers = Defaults::kTransformers;
+  };
+  explicit Enveloper(const Args0x0& args);
+  static SharedEnveloper MakeShared(const Args0x0& args);
+  SharedWaver waver;
   Attack attack;
   Hold hold;
   Decay decay;
@@ -44,6 +45,6 @@ struct Enveloper : Waver {
     Amplitude amplitude;
     Duration total;
   };
-  InnerResult Inner(class Wave &wave);
+  InnerResult Inner(class Wave& wave);
 };
 }  // namespace acetza::muza::wavers

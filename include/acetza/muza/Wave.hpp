@@ -15,12 +15,13 @@ class Wave {
     static constexpr Channels kChannels{constants::kChannels};
     static constexpr SampleRate kSampleRate{constants::kSampleRate};
   };
-  explicit Wave(Channels channels = Defaults::kChannels,
-                SampleRate sample_rate = Defaults::kSampleRate);
-  explicit Wave(Frames&& frames, Channels channels = Defaults::kChannels,
-                SampleRate sample_rate = Defaults::kSampleRate);
-  explicit Wave(Duration duration, Channels channels = Defaults::kChannels,
-                SampleRate sample_rate = Defaults::kSampleRate);
+  struct Args0x0 {
+    Channels channels = Defaults::kChannels;
+    SampleRate sample_rate = Defaults::kSampleRate;
+  };
+  explicit Wave(const Args0x0&);
+  explicit Wave(Frames&& frames, const Args0x0&);
+  explicit Wave(Duration duration, const Args0x0&);
   const class Frames& GetFrames() const;
   Count GetChannelsCount() const;
   Count GetFramesCount() const;
@@ -30,7 +31,7 @@ class Wave {
   Frame& operator[](Index);
   [[nodiscard]] Time FrameToTime(Index frame) const;
   [[nodiscard]] Index TimeToFrame(Time time) const;
-  void Save(const std::string& path = Defaults::kWaveSavePath) const;
+  Wave& Save(const std::string& path = Defaults::kWaveSavePath);
 
  private:
   class Frames frames_;

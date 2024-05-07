@@ -7,8 +7,8 @@ namespace acetza::muza::wavers {
 Enveloper::InnerResult Enveloper::Inner(class Wave &wave) {
   Duration total{wave.GetDuration()};
   Duration limit{total.value - release.value};
-  if (limit.value < 0.0) {
-    return {.time{0.0}, .amplitude{0.0}, .total{total}};
+  if (limit.value <= 0.0) {
+    return {.time{0.0}, .amplitude{1.0}, .total{total}};
   }
   TransformResult result =
       Transform(wave, transformers.attack, Time{0.0}, Amplitude{0.0},

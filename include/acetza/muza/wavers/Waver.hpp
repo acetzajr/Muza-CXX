@@ -1,6 +1,10 @@
 #pragma once
+#include <memory>
+
 #include "acetza/muza/Wave.hpp"
 namespace acetza::muza {
+class Waver;
+using SharedWaver = std::shared_ptr<Waver>;
 class Waver {
  public:
   Waver() = default;

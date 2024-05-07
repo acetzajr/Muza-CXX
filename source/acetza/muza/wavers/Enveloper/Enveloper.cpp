@@ -1,25 +1,20 @@
 #include "acetza/muza/wavers/Enveloper.hpp"
 
 #include <memory>
-#include <utility>
 
 #include "acetza/muza/types.hpp"
+#include "acetza/muza/wavers/Waver.hpp"
 
 namespace acetza::muza::wavers {
-Enveloper::Enveloper(std::shared_ptr<Waver> waver, Attack attack, Hold hold,
-                     Decay decay, Sustain sustain, Release release,
-                     EnvelopeTransformers transformers)
-    : waver(std::move(waver)),
-      attack(attack),
-      hold(hold),
-      decay(decay),
-      sustain(sustain),
-      release(release),
-      transformers(transformers) {}
-std::shared_ptr<Enveloper> Enveloper::MakeShared(
-    std::shared_ptr<Waver> waver, Attack attack, Hold hold, Decay decay,
-    Sustain sustain, Release release, EnvelopeTransformers transformers) {
-  return std::make_shared<Enveloper>(waver, attack, hold, decay, sustain,
-                                     release, transformers);
+Enveloper::Enveloper(const Enveloper::Args0x0& args)
+    : waver(args.waver),
+      attack(args.attack),
+      hold(args.hold),
+      decay(args.decay),
+      sustain(args.sustain),
+      release(args.release),
+      transformers(args.transformers) {}
+SharedEnveloper Enveloper::MakeShared(const Enveloper::Args0x0& args) {
+  return std::make_shared<Enveloper>(args);
 }
 }  // namespace acetza::muza::wavers

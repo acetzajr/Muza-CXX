@@ -7,7 +7,7 @@
 #include "acetza/muza/Wave.hpp"
 #include "acetza/muza/types.hpp"
 namespace acetza::muza {
-void Wave::Save(const std::string& path) const {
+Wave& Wave::Save(const std::string& path) {
   SF_INFO info;
   info.samplerate = static_cast<int>(sample_rate_.value);
   info.channels = static_cast<int>(channels_.value);
@@ -30,5 +30,6 @@ void Wave::Save(const std::string& path) const {
     throw std::runtime_error{"written != requested"};
   }
   sf_close(file);
+  return *this;
 }
 }  // namespace acetza::muza

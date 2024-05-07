@@ -5,6 +5,8 @@
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wavers/Waver.hpp"
 namespace acetza::muza::wavers {
+struct Basic;
+using SharedBasic = std::shared_ptr<Basic>;
 struct Basic : public Waver {
   struct Defaults {
     static constexpr Primitive kPrimitive{constants::kPrimitive};
@@ -14,19 +16,16 @@ struct Basic : public Waver {
     static constexpr SampleRate kSampleRate{constants::kSampleRate};
     static constexpr Channels kChannels{constants::kChannels};
   };
-  explicit Basic(Primitive primitive = Defaults::kPrimitive,
-                 Frequency frequency = Defaults::kFrequency,
-                 Duration duration = Defaults::kDuration,
-                 Amplitude amplitude = Defaults::kAmplitude,
-                 SampleRate sample_rate = Defaults::kSampleRate,
-                 Channels channels = Defaults::kChannels);
-  static std::shared_ptr<Basic> MakeShared(
-      Primitive primitive = Defaults::kPrimitive,
-      Frequency frequency = Defaults::kFrequency,
-      Duration duration = Defaults::kDuration,
-      Amplitude amplitude = Defaults::kAmplitude,
-      SampleRate sample_rate = Defaults::kSampleRate,
-      Channels channels = Defaults::kChannels);
+  struct Args0x0 {
+    Primitive primitive = Defaults::kPrimitive;
+    Frequency frequency = Defaults::kFrequency;
+    Duration duration = Defaults::kDuration;
+    Amplitude amplitude = Defaults::kAmplitude;
+    SampleRate sample_rate = Defaults::kSampleRate;
+    Channels channels = Defaults::kChannels;
+  };
+  explicit Basic(const Args0x0& args);
+  static SharedBasic MakeShared(const Args0x0& args);
   Primitive primitive;
   Frequency frequency;
   Duration duration;

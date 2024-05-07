@@ -8,7 +8,7 @@
 namespace acetza::muza::wavers {
 Wave Basic::Wave() {
   class Wave wave {
-    duration, channels, sample_rate
+    duration, { channels, sample_rate }
   };
   Index index{0};
   for (Frame &frame : wave.GetFrames()) {
