@@ -1,4 +1,5 @@
 #include "acetza/muza/Samples.hpp"
+#include <vector>
 
 #include "acetza/muza/types.hpp"
 namespace acetza::muza {

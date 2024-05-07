@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 
+#include "acetza/muza/Wave.hpp"
 #include "acetza/muza/constants.hpp"
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wavers/Waver.hpp"

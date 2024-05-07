@@ -1,4 +1,5 @@
 #include "acetza/muza/Frame.hpp"
+#include "acetza/muza/Samples.hpp"
 #include "acetza/muza/types.hpp"
 namespace acetza::muza {
 Channels Frame::channels() const { return {samples_.size()}; }

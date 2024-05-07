@@ -1,5 +1,8 @@
 #include "acetza/muza/Wave.hpp"
 
+#include <utility>
+
+#include "acetza/muza/Frames.hpp"
 #include "acetza/muza/sample_rate.hpp"
 #include "acetza/muza/types.hpp"
 

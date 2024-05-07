@@ -1,7 +1,9 @@
-#include <sndfile.h>
+#include <sndfile-64.h>
 
 #include <cstddef>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 #include "acetza/muza/Frame.hpp"
 #include "acetza/muza/Wave.hpp"
