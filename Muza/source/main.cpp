@@ -1,8 +1,9 @@
 
-#include "acetza/muza/wavers/classes/basic.hpp"
-#include "acetza/muza/wavers/classes/enveloper.hpp"
+#include "acetza/muza/wavers/basic.hpp"
+#include "acetza/muza/wavers/enveloper.hpp"
 namespace mz = acetza::muza;
+namespace wv = mz::wavers;
 int main() {
-  mz::Enveloper<mz::Basic> waver{{mz::Basic{{}}}};
+  wv::Enveloper<wv::Basic> waver{{wv::Basic{{}}}};
   waver.Wave().Save();
 }
