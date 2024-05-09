@@ -2,8 +2,7 @@
 #include <cstddef>
 
 namespace acetza::muza {
-template <class T>
-struct Value {
+template <class T> struct Value {
   T value;
 };
 struct Double : public Value<double> {};
@@ -25,9 +24,10 @@ struct Channels : public Size {};
 struct SampleRate : public Size {};
 using Primitive = Sample (*)(Part part);
 using Transformer = Amplitude (*)(Part part);
+using Numberer = Index (*)(Index index);
 struct EnvelopeTransformers {
   Transformer attack;
   Transformer decay;
   Transformer release;
 };
-}  // namespace acetza::muza
+} // namespace acetza::muza

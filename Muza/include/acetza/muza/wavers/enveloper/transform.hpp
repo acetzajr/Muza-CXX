@@ -1,0 +1,13 @@
+#pragma once
+#include "acetza/muza/types.hpp"
+#include "acetza/muza/wave/wave.hpp"
+namespace acetza::muza {
+struct TransformResult {
+  bool disrupted;
+  Time time;
+  Amplitude amplitude;
+};
+TransformResult Transform(Wave &wave, Transformer transformer, Time start_time,
+                          Amplitude start_amplitude, Time end_time,
+                          Amplitude end_amplitude, Duration limit);
+} // namespace acetza::muza

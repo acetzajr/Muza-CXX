@@ -1,3 +1,3 @@
 #!/bin/fish
-set style Google
+set style LLVM
 clang-format -style=$style -dump-config >.clang-format
