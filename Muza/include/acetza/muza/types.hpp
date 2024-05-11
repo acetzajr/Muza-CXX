@@ -1,6 +1,5 @@
 #pragma once
 #include <cstddef>
-
 namespace acetza::muza {
 template <class T> struct Value {
   T value;

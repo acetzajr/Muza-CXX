@@ -1,5 +1,4 @@
 #pragma once
-
 #include "acetza/muza/constants.hpp"
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wave/wave.hpp"
@@ -47,11 +46,10 @@ Enveloper<Waver>::Enveloper(const Enveloper::Args0x0 &args)
 
 template <enveloper::Waver Waver> Wave Enveloper<Waver>::Wave() const {
   class Wave wave = waver_.Wave();
-  enveloper::Until result = enveloper::UntilRelease(
+  enveloper::Until until = enveloper::UntilRelease(
       wave, attack_, hold_, decay_, sustain_, release_, transformers_);
-  enveloper::Transform(wave, transformers_.release, result.time,
-                       result.amplitude, Time{result.total}, Amplitude{0.0},
-                       result.total);
+  enveloper::Transform(wave, transformers_.release, until.time, until.amplitude,
+                       Time{until.total}, Amplitude{0.0}, until.total);
   return wave;
 }
 } // namespace acetza::muza::wavers

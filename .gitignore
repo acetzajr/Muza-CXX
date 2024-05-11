@@ -2,3 +2,4 @@ build/
 tmp/
 .cache/
 .clangd.json
+__pycache__

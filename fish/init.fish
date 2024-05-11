@@ -13,6 +13,7 @@ else
     exit 1
 end
 fish/util/mkdir.fish build
+if test $argv = gnu
 set c_compiler clang
 set cpp_compiler clang++
 cmake -S=. -B=build -DCMAKE_BUILD_TYPE=$argv -DCMAKE_CXX_COMPILER=$cpp_compiler -DCMAKE_C_COMPILER=$c_compiler -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
