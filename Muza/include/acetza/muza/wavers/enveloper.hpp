@@ -1,5 +1,5 @@
 #pragma once
-#include "acetza/muza/constants.hpp"
+#include "acetza/muza/functions/transformers.hpp"
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wave/wave.hpp"
 #include "acetza/muza/wavers/enveloper/concepts.hpp"
@@ -9,13 +9,12 @@ template <enveloper::Waver Waver> class Enveloper {
 public:
   struct Defaults {
     static constexpr EnvelopeTransformers kTransformers{
-        constants::kTransformer, constants::kTransformer,
-        constants::kTransformer};
-    static constexpr Attack kAttack{constants::kAttack};
-    static constexpr Hold kHold{constants::kHold};
-    static constexpr Decay kDecay{constants::kDecay};
-    static constexpr Sustain kSustain{constants::kSustain};
-    static constexpr Release kRelease{constants::kRelease};
+        transformers::Smooth, transformers::Smooth, transformers::Smooth};
+    static constexpr Attack kAttack{1.0 / 16.0};
+    static constexpr Hold kHold{1.0 / 12.0};
+    static constexpr Decay kDecay{1.0 / 8.0};
+    static constexpr Sustain kSustain{1.0 / 2.0};
+    static constexpr Release kRelease{1.0 / 4.0};
   };
   struct Args0x0 {
     Waver waver;

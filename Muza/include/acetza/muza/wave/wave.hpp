@@ -1,21 +1,18 @@
 #pragma once
-
-#include <string>
-
-#include "acetza/muza/constants.hpp"
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wave/frame.hpp"
 #include "acetza/muza/wave/frames.hpp"
+#include <string>
 namespace acetza::muza {
 class Wave {
 public:
   struct Defaults {
-    static constexpr std::string kWaveSavePath{constants::kWaveSavePath};
-    static constexpr Sample kSample{constants::kSample};
-    static constexpr Channels kChannels{constants::kChannels};
-    static constexpr SampleRate kSampleRate{constants::kSampleRate};
-    static constexpr Time kTime{constants::kTime};
-    static constexpr Amplitude kAmplitude{constants::kAmplitude};
+    static constexpr std::string kWaveSavePath{"tmp/wave.wav"};
+    static constexpr Sample kSample{0.0};
+    static constexpr Channels kChannels{2};
+    static constexpr SampleRate kSampleRate{44'100};
+    static constexpr Time kTime{0.0};
+    static constexpr Amplitude kAmplitude{1.0};
   };
   struct Args0x0 {
     Channels channels = Defaults::kChannels;

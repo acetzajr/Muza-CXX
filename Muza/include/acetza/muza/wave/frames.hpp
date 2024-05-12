@@ -1,8 +1,7 @@
 #pragma once
-#include <vector>
-
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wave/frame.hpp"
+#include <vector>
 namespace acetza::muza::wave {
 class Frames : public std::vector<Frame> {
 public:
