@@ -2,9 +2,11 @@
 #include "acetza/muza/functions/primitives.hpp"
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wave/wave.hpp"
+#include <memory>
 namespace acetza::muza::wavers {
 class Basic {
 public:
+  using Shared = std::shared_ptr<Basic>;
   struct Defaults {
     static constexpr Primitive kPrimitive{primitives::Sin};
     static constexpr Frequency kFrequency{360.0};
@@ -22,6 +24,7 @@ public:
     Channels channels = Defaults::kChannels;
   };
   explicit Basic(const Args0x0 &args);
+  static Shared MakeShared(const Args0x0 &args);
   [[nodiscard]] Frequency GetFrequency() const;
   void SetFrequency(Frequency frequency);
   [[nodiscard]] class Wave Wave() const;

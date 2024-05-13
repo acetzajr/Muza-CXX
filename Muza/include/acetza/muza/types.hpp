@@ -20,6 +20,8 @@ struct Part : public Double {};
 struct Index : public Size {};
 struct Count : public Size {};
 struct Channels : public Size {};
+struct Channel : public Size {};
+struct Frame : public Size {};
 struct SampleRate : public Size {};
 using Primitive = Sample (*)(Part part);
 using Transformer = Amplitude (*)(Part part);

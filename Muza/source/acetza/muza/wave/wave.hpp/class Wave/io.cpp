@@ -1,13 +1,11 @@
-#include <sndfile-64.h>
-
-#include <cstddef>
-#include <stdexcept>
-#include <string>
-#include <vector>
-
 #include "acetza/muza/types.hpp"
 #include "acetza/muza/wave/frame.hpp"
 #include "acetza/muza/wave/wave.hpp"
+#include <cstddef>
+#include <sndfile-64.h>
+#include <stdexcept>
+#include <string>
+#include <vector>
 namespace acetza::muza {
 Wave &Wave::Save(const std::string &path) {
   SF_INFO info;
@@ -21,11 +19,10 @@ Wave &Wave::Save(const std::string &path) {
   size_t capacity = GetFramesCount().value * channels_.value;
   std::vector<double> samples;
   samples.reserve(capacity);
-  for (const wave::Frame &frame : GetFrames()) {
-    for (const Sample &sample : frame.Samples()) {
-      samples.push_back(sample.value);
-    }
-  }
+  ForEachFrame([&samples](wave::Frame &frame, Index) {
+    frame.ForEachSample(
+        [&samples](Sample &sample, Index) { samples.push_back(sample.value); });
+  });
   sf_count_t requested = static_cast<sf_count_t>(GetFramesCount().value);
   sf_count_t written = sf_writef_double(file, samples.data(), requested);
   if (written != requested) {

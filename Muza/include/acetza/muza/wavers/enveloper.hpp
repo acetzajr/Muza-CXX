@@ -4,6 +4,7 @@
 #include "acetza/muza/wave/wave.hpp"
 #include "acetza/muza/wavers/enveloper/concepts.hpp"
 #include "acetza/muza/wavers/enveloper/transform.hpp"
+#include <memory>
 namespace acetza::muza::wavers {
 template <enveloper::Waver Waver> class Enveloper {
 public:
@@ -17,7 +18,7 @@ public:
     static constexpr Release kRelease{1.0 / 4.0};
   };
   struct Args0x0 {
-    Waver waver;
+    std::shared_ptr<Waver> waver = Waver::MakeShared({});
     Attack attack = Defaults::kAttack;
     Hold hold = Defaults::kHold;
     Decay decay = Defaults::kDecay;
@@ -29,7 +30,7 @@ public:
   [[nodiscard]] class Wave Wave() const;
 
 private:
-  Waver waver_;
+  std::shared_ptr<Waver> waver_;
   Attack attack_;
   Hold hold_;
   Decay decay_;
@@ -44,11 +45,12 @@ Enveloper<Waver>::Enveloper(const Enveloper::Args0x0 &args)
       transformers_(args.transformers) {}
 
 template <enveloper::Waver Waver> Wave Enveloper<Waver>::Wave() const {
-  class Wave wave = waver_.Wave();
+  class Wave wave = waver_->Wave();
   enveloper::Until until = enveloper::UntilRelease(
       wave, attack_, hold_, decay_, sustain_, release_, transformers_);
+  Time total{wave.GetDuration()};
   enveloper::Transform(wave, transformers_.release, until.time, until.amplitude,
-                       Time{until.total}, Amplitude{0.0}, until.total);
+                       total, Amplitude{0.0}, total);
   return wave;
 }
 } // namespace acetza::muza::wavers

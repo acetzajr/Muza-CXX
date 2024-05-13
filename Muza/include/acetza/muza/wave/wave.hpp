@@ -24,19 +24,37 @@ public:
   [[nodiscard]] const class Frames &GetFrames() const;
   [[nodiscard]] Count GetChannelsCount() const;
   [[nodiscard]] Count GetFramesCount() const;
+  [[nodiscard]] Count GetSamplesCount() const;
   [[nodiscard]] Duration GetDuration() const;
-  [[nodiscard]] wave::Frames &GetFrames();
-  void SetDuration(Duration duration, Sample fill = Defaults::kSample);
+  [[nodiscard]] Amplitude GetMaxAmplitude() const;
+  Wave &SetDuration(Duration duration, Sample fill = Defaults::kSample);
+  Wave &SetFramesCount(Count count, Sample fill = Defaults::kSample);
   wave::Frame &operator[](Index);
+  const wave::Frame &operator[](Index) const;
   [[nodiscard]] Time FrameToTime(Index frame) const;
   [[nodiscard]] Index TimeToFrame(Time time) const;
   Wave &Save(const std::string &path = Defaults::kWaveSavePath);
-  Wave &Add(const Wave &wave, Time time = Defaults::kTime,
+  Wave &Add(const Wave &other, Time time = Defaults::kTime,
             Amplitude amplitude = Defaults::kAmplitude);
+  Wave &Normalize();
+  template <typename Lambda> Wave &ForEachFrame(Lambda lambda);
+  template <typename Lambda> const Wave &ForEachFrame(Lambda lambda) const;
 
 private:
   wave::Frames frames_;
   Channels channels_;
   SampleRate sample_rate_;
 };
+template <typename Lambda> Wave &Wave::ForEachFrame(Lambda lambda) {
+  for (Index index{0}; index.value < GetFramesCount().value; ++index.value) {
+    lambda(frames_.at(index.value), index);
+  }
+  return *this;
+}
+template <typename Lambda> const Wave &Wave::ForEachFrame(Lambda lambda) const {
+  for (Index index{0}; index.value < GetFramesCount().value; ++index.value) {
+    lambda(frames_.at(index.value), index);
+  }
+  return *this;
+}
 }; // namespace acetza::muza

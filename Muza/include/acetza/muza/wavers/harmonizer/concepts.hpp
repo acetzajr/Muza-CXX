@@ -1,6 +1,7 @@
-#include "acetza/muza/wavers/concepts/frequencyr.hpp"
-#include "acetza/muza/wavers/concepts/waver.hpp"
+#include "acetza/muza/wavers/concepts.hpp"
 namespace acetza::muza::wavers::harmonizer {
 template <typename T>
-concept Waver = Waver<T> && Frequencyr<T>;
+concept Fundamental = Waver<T> && FrequencyGetter<T> && DefaultShared<T>;
+template <typename T>
+concept Harmonic = Waver<T> && FrequencySetter<T> && DefaultShared<T>;
 } // namespace acetza::muza::wavers::harmonizer

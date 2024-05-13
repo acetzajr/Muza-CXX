@@ -1,7 +1,5 @@
-
-#include "acetza/muza/wavers/concepts/frequencyr.hpp"
-#include "acetza/muza/wavers/concepts/waver.hpp"
+#include "acetza/muza/wavers/concepts.hpp"
 namespace acetza::muza::wavers::enveloper {
 template <typename T>
-concept Waver = Waver<T> && Frequencyr<T>;
+concept Waver = Waver<T> && DefaultShared<T>;
 } // namespace acetza::muza::wavers::enveloper
